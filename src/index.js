@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, ViewPropTypes,I18nManager } from 'react-native'
+import {StyleSheet, View, ViewPropTypes, I18nManager} from 'react-native'
 
 // compatability for react-native versions < 0.44
 const ViewPropTypesStyle = ViewPropTypes
   ? ViewPropTypes.style
   : View.propTypes.style
-let direction = I18nManager.isRTL? 'right' : 'left';
+let direction = I18nManager.isRTL ? 'right' : 'left';
 const styles = StyleSheet.create({
   outerCircle: {
     justifyContent: 'center',
@@ -58,7 +58,7 @@ export default class PercentageCircle extends Component {
   };
 
   computeDerivedState() {
-    const { props } = this;
+    const {props} = this;
     const percent = Math.max(Math.min(100, props.percent), 0)
     const needHalfCircle2 = percent > 50
     let halfCircle1Degree
@@ -86,7 +86,7 @@ export default class PercentageCircle extends Component {
   }
 
   renderHalfCircle(rotateDegrees, halfCircleStyles) {
-    const { radius, color } = this.props
+    const {radius, color} = this.props
     const key = I18nManager.isRTL ? 'right' : 'left';
     return (
       <View
@@ -107,9 +107,9 @@ export default class PercentageCircle extends Component {
               borderRadius: radius,
               overflow: 'hidden',
               transform: [
-                { translateX: radius / 2 },
-                { rotate: `${rotateDegrees}deg` },
-                { translateX: -radius / 2 },
+                {translateX: direction === 'right' ? radius / 2 : -radius / 2},
+                {rotate: `${rotateDegrees}deg`},
+                {translateX: radius / 2},
               ],
               backgroundColor: color,
               ...halfCircleStyles,
