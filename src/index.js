@@ -107,9 +107,9 @@ export default class PercentageCircle extends Component {
               borderRadius: radius,
               overflow: 'hidden',
               transform: [
-                {translateX: direction === 'right' ? radius / 2 : -radius / 2},
+                {translateX: direction === 'right' ? radius / 2 : radius / 2},
                 {rotate: `${rotateDegrees}deg`},
-                {translateX: radius / 2},
+                {translateX: direction === 'right' ? radius / 2 : - radius / 2},
               ],
               backgroundColor: color,
               ...halfCircleStyles,
